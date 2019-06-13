@@ -1,4 +1,16 @@
 .board {
+  overflow: scroll;
+  height: calc(100% - 60px);
+  width: 100%;
+  &__index {
+    margin-left: 20px;
+  }
+  &__link {
+    display: inline-block;
+    width: 150px;
+    height: 110px;
+    background-size: 150px 110px;
+  }
   &__new {
     margin: 15px auto;
     width: 630px;

@@ -1,0 +1,10 @@
+.board
+  %h2 My Boards
+  .board__index
+    %p Personal
+    - @boards.each do |board|
+      = link_to "#", class: "link" do
+        .board__link{style: "background-image: url(#{board.background.image})"}
+          .bkrgba
+            .board__name
+              = board.name
