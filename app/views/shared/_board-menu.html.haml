@@ -1,5 +1,6 @@
 %nav.navbar.navbar-expand-lg.navbar-light{:style => "background-color: #e3f2fd;"}
-  %a.navbar-brand{:href => "#"} Navbar
+  %a.navbar-brand{:href => "#"}
+    = @board.name
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
@@ -12,12 +13,11 @@
         %a.nav-link{:href => "#"} Link
       %li.nav-item.dropdown
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          Dropdown
+          Board Menu
         .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-          %a.dropdown-item{:href => "#"} Action
-          %a.dropdown-item{:href => "#"} Another action
-          .dropdown-divider
-          %a.dropdown-item{:href => "#"} Something else here
+          = link_to "Edit", edit_board_path(@board.id), class: "dropdown-item"
+          = link_to "Delete", board_path(@board.id), method: :delete, class: "dropdown-item"
+          
       %li.nav-item
         %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled
     %form.form-inline.my-2.my-lg-0
