@@ -1,0 +1,24 @@
+.board__form
+  = form_for @board do |f|
+    .form-group
+      = f.label :name, class: 'form-controll-label'
+      %br/
+      = f.text_field :name, class: 'form-controll'
+    .form-group
+      = f.label :about, class: 'form-controll-label'
+      %br/
+      = f.text_area :about, class: 'form-controll'
+
+    .form-group
+      = f.label :deadline, class: 'form-controll-label'
+      %br/
+      = f.date_field :deadline, class: 'form-controll'
+    .form-group.backgrounds
+      = f.label :background, class: 'form-controll-label'
+      %br/
+      .image
+      - @backgrounds.each do |background|
+        = image_tag background.image, class: 'background', data: {id: background.id}
+        = f.radio_button :background_id, background.id
+    .form-group
+      = f.submit "Save", class: "btn btn-primary"

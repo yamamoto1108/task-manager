@@ -3,6 +3,8 @@ class BoardsController < ApplicationController
   end
 
   def new
+    @board = Board.new
+    @backgrounds = Background.all
   end
 
   def create
