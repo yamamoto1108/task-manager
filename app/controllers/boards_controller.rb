@@ -24,9 +24,16 @@ class BoardsController < ApplicationController
   end
 
   def edit
+    @backgrounds = Background.all
   end
 
   def update
+    if @board.update(board_params)
+      redirect_to board_path(@board)
+    else
+      @backgrounds = Background.all
+      render :edit
+    end
   end
 
   def destroy
