@@ -1,5 +1,11 @@
 .board__form
   = form_for @board do |f|
+    - if @board.errors.any?
+      .form__errors
+        %h3= "#{@board.errors.full_messages.count}件のエラーが発生しました。"
+        %ul
+          - @board.errors.full_messages.each do |message|
+            %li= message
     .form-group
       = f.label :name, class: 'form-controll-label'
       %br/

@@ -8,6 +8,13 @@ class BoardsController < ApplicationController
   end
 
   def create
+    @board = Board.new(board_params)
+    if @board.save
+      redirect_to root_path
+    else
+      @backgrounds = Background.all
+      render :new
+    end
   end
 
   def edit
@@ -17,5 +24,11 @@ class BoardsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def board_params
+    params.require(:board).permit(:name, :about, :deadline, :finish, :background_id)
   end
 end
