@@ -2,8 +2,9 @@
 .board__body{ style: "background-image: url(#{@board.background.image})"}
   .lists
     - if @board.lists.present?
-      = render "lists/list"
-    .list
+      .list__items
+        = render @board.lists
+    .list__add.list
       .list__name
         Add New List
       .list__form
