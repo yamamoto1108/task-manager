@@ -1,2 +1,12 @@
 = render "shared/board-menu"
 .board__body{ style: "background-image: url(#{@board.background.image})"}
+  .lists
+    - if @board.lists.present?
+      = render "lists/list"
+    .list
+      .list__name
+        Add New List
+      .list__form
+        = form_for [@board, @list] do |f|
+          = f.text_field :name, class: 'list__form', placeholder: 'Type List Name'
+          = f.submit 'Add List', class: 'btn btn-outline-secondary'
