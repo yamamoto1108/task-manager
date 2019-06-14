@@ -1,0 +1,25 @@
+%nav.navbar.navbar-expand-lg.navbar-light{:style => "background-color: #e3f2fd;"}
+  %a.navbar-brand{:href => "#"}
+    = @board.name
+  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item.active
+        %a.nav-link{:href => "#"}
+          Home
+          %span.sr-only (current)
+      %li.nav-item
+        %a.nav-link{:href => "#"} Link
+      %li.nav-item.dropdown
+        %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          Board Menu
+        .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+          = link_to "Edit", edit_board_path(@board.id), class: "dropdown-item"
+          = link_to "Delete", board_path(@board.id), method: :delete, class: "dropdown-item", "data-dismiss" => "modal", data: { confirm: "ボードを削除しますか？", commit: "DELETE", cancel: "Cancel"}, title: "DELETE Board"
+          
+      %li.nav-item
+        %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled
+    %form.form-inline.my-2.my-lg-0
+      %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
+      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
