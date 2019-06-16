@@ -23,10 +23,9 @@
           %br/
           = f.date_field :deadline, class: 'form-control'
         .form-group.form-check
-          = f.check_box :finish, :as => :boolean, class: 'form-check-input'
           = f.label :"Are you done this Task?", class: 'form-control-label'
           %br/
-          
+          = f.select :finish, Card.finishes.keys, {}, class: 'form-controll'
         .modal-footer
           %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
           = f.submit "Save", class: "btn btn-primary"

@@ -1,0 +1,22 @@
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %h5#exampleModalLongTitle.modal-title 
+        = card.name
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} ×
+    .modal-body
+      .card__content [説明]
+      .card__content__child
+        = card.about
+      .card__content [期限]
+      .card__content__child
+        = card.deadline
+      .card__content [完了状態]
+      .card__content__child
+        = card.finish
+    .modal-footer
+      %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+      = link_to 'Edit Card', edit_board_card_path(@board), remote: true, class: 'btn btn-success', "data-dismiss" => "modal"
+      #card-form.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+      = link_to 'DELETE', board_card_path(@board), method: :delete, class: 'btn btn-danger', "data-dismiss" => "modal", data: { confirm: "カードを削除しますか？", commit: "DELETE", cancel: "Cancel"}, title: "DELETE Card"

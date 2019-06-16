@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_board
+  before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   def show
   end
@@ -26,6 +27,10 @@ class CardsController < ApplicationController
 
   def set_board
     @board = Board.find(params[:board_id])
+  end
+
+  def set_card
+    @card = Card.find(params[:id])
   end
 
   def card_params
