@@ -1,0 +1,33 @@
+.lists {
+  overflow: scroll;
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  height: 100%;
+}
+
+.list {
+  background-color: #eceff1;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 3px;
+  width: 200px;
+  position: relative;
+  &__items {
+    display: flex;
+    align-items: baseline;
+  }
+  &__name {
+    font-weight: bold;
+    display: inline-block;
+  }
+  &__form {
+    margin: 5px 0;
+  }
+  &__icon {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+  }
+}

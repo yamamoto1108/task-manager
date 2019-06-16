@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_101446) do
+ActiveRecord::Schema.define(version: 2019_06_14_001936) do
 
   create_table "backgrounds", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "image"
@@ -28,4 +28,13 @@ ActiveRecord::Schema.define(version: 2019_06_13_101446) do
     t.integer "background_id"
   end
 
+  create_table "lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "board_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_lists_on_board_id"
+  end
+
+  add_foreign_key "lists", "boards"
 end
