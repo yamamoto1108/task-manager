@@ -10,14 +10,23 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.create(card_params)
-    redirect_to board_path(@board)
+    @card = Card.new(card_params)
+    if @card.save
+      redirect_to board_path(@board)
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
+    if @card.update(card_params)
+      redirect_to board_path(@board)
+    else
+      render :edit
+    end
   end
 
   def destroy

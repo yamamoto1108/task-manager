@@ -6,6 +6,12 @@
         %span{"aria-hidden" => "true"} ×
     .modal-body
       = form_for [@board, @card], remote: true do |f|
+        - if @card.errors.any?
+          .form__errors
+            %h3= "#{@card.errors.full_messages.count}件のエラーが発生しました。"
+            %ul
+              - @card.errors.full_messages.each do |message|
+                %li= message
         .form-group
           = f.label :name, class: 'form-control-label'
           %br/
@@ -22,7 +28,7 @@
           = f.label :deadline, class: 'form-control-label'
           %br/
           = f.date_field :deadline, class: 'form-control'
-        .form-group.form-check
+        .form-group
           = f.label :"Are you done this Task?", class: 'form-control-label'
           %br/
           = f.select :finish, Card.finishes.keys, {}, class: 'form-controll'
