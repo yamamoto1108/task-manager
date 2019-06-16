@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   resources :boards do
     resources :lists, except: [:index, :show]
+    resources :cards, except: [:index]
   end
 end
