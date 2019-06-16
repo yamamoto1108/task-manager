@@ -11,3 +11,4 @@
         = form_for [@board, @list] do |f|
           = f.text_field :name, class: 'list__form', placeholder: 'Type List Name'
           = f.submit 'Add List', class: 'btn btn-outline-secondary'
+#list-form.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}

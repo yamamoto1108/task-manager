@@ -17,6 +17,8 @@ class ListsController < ApplicationController
   end
 
   def update
+    @list.update(list_params)
+    @lists = List.all
   end
 
   def destroy
