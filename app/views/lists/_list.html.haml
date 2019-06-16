@@ -4,7 +4,7 @@
   .list__icon
     = link_to edit_board_list_path(@board.id, list.id), remote: true do
       = icon 'fas', 'edit', class: "icon"
-    = link_to board_list_path(@board.id, list.id), method: :delete do
+    = link_to board_list_path(@board.id, list.id), method: :delete, "data-dismiss" => "modal", data: { confirm: "リストを削除しますか？", commit: "DELETE", cancel: "Cancel"}, title: "DELETE List" do
       = icon 'fas', 'trash-alt', class: "icon"
   .list__cards
     = render list.cards
