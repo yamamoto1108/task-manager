@@ -8,7 +8,7 @@ class ListsController < ApplicationController
   def create
     @list = List.create(list_params)
     respond_to do |format|
-      format.html { redirect_to board_path(@board.id) }
+      format.html { redirect_to board_path(@board) }
       format.json
     end
   end
@@ -18,12 +18,12 @@ class ListsController < ApplicationController
 
   def update
     @list.update(list_params)
-    @lists = List.all
+    redirect_to board_path(@board)
   end
 
   def destroy
     @list.destroy
-    redirect_to board_path(@board.id)
+    redirect_to board_path(@board)
   end
 
   private

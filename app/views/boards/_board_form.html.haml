@@ -7,20 +7,20 @@
           - @board.errors.full_messages.each do |message|
             %li= message
     .form-group
-      = f.label :name, class: 'form-controll-label'
+      = f.label :name, class: 'form-control-label'
       %br/
-      = f.text_field :name, class: 'form-controll'
+      = f.text_field :name, class: 'form-control'
     .form-group
-      = f.label :about, class: 'form-controll-label'
+      = f.label :about, class: 'form-control-label'
       %br/
-      = f.text_area :about, class: 'form-controll'
+      = f.text_area :about, class: 'form-control'
 
     .form-group
-      = f.label :deadline, class: 'form-controll-label'
+      = f.label :deadline, class: 'form-control-label'
       %br/
-      = f.date_field :deadline, class: 'form-controll'
+      = f.date_field :deadline, class: 'form-control'
     .form-group.backgrounds
-      = f.label :background, class: 'form-controll-label'
+      = f.label :background, class: 'form-control-label'
       %br/
       .image
       - @backgrounds.each do |background|

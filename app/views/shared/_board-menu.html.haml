@@ -15,8 +15,8 @@
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
           Board Menu
         .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-          = link_to "Edit", edit_board_path(@board.id), class: "dropdown-item"
-          = link_to "Delete", board_path(@board.id), method: :delete, class: "dropdown-item", "data-dismiss" => "modal", data: { confirm: "ボードを削除しますか？", commit: "DELETE", cancel: "Cancel"}, title: "DELETE Board"
+          = link_to "Edit Board", edit_board_path(@board.id), class: "dropdown-item"
+          = link_to "Delete Board", board_path(@board.id), method: :delete, class: "dropdown-item", "data-dismiss" => "modal", data: { confirm: "ボードを削除しますか？", commit: "DELETE", cancel: "Cancel"}, title: "DELETE Board"
           
       %li.nav-item
         %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled

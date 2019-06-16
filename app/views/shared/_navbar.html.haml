@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  %a.navbar-brand{:href => "#"} Navbar
+  %a.navbar-brand{:href => "/boards"} Task-manager
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
@@ -12,9 +12,9 @@
         %a.nav-link{:href => "#"} Link
       %li.nav-item.dropdown
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          Dropdown
+          Add
         .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-          %a.dropdown-item{:href => "#"} Action
+          = link_to "Board", new_board_path, class: "dropdown-item"
           %a.dropdown-item{:href => "#"} Another action
           .dropdown-divider
           %a.dropdown-item{:href => "#"} Something else here
