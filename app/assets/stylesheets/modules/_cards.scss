@@ -1,0 +1,14 @@
+.card {
+  margin: 10px;
+  padding: 0 10px;
+  &__title {
+    color: #333;
+  }
+  &__content {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  &__deadline {
+    display: inline-block;
+  }
+}

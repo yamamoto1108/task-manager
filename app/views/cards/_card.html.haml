@@ -1,0 +1,8 @@
+.card
+  .card__title
+    = link_to "#{card.name}", board_card_path(@board, card), remote: true, class: "card__title"
+    #card-show.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .card__deadline
+  - if card.deadline.present?
+    LIMIT : 
+    = card.deadline

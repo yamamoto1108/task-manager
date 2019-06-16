@@ -1,0 +1,32 @@
+.modal-dialog{:role => "document"}
+  .modal-content
+    .modal-header
+      %h5#exampleModalLongTitle.modal-title 
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} ×
+    .modal-body
+      = form_for [@board, @card], remote: true do |f|
+        .form-group
+          = f.label :name, class: 'form-control-label'
+          %br/
+          = f.text_field :name, class: 'form-control'
+        .form-group
+          = f.label :about, class: 'form-control-label'
+          %br/
+          = f.text_area :about, class: 'form-control'
+        .form-group
+          = f.label :list_id, class: 'form-control-label'
+          %br/
+          = f.collection_select :list_id, @board.lists.all, :id, :name, class: 'form-control'
+        .form-group
+          = f.label :deadline, class: 'form-control-label'
+          %br/
+          = f.date_field :deadline, class: 'form-control'
+        .form-group.form-check
+          = f.check_box :finish, :as => :boolean, class: 'form-check-input'
+          = f.label :"Are you done this Task?", class: 'form-control-label'
+          %br/
+          
+        .modal-footer
+          %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+          = f.submit "Save", class: "btn btn-primary"
