@@ -17,7 +17,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      redirect_to root_path
+      redirect_to boards_path
     else
       @backgrounds = Background.all
       render :new
@@ -39,7 +39,7 @@ class BoardsController < ApplicationController
 
   def destroy
     @board.destroy
-    redirect_to root_path
+    redirect_to boards_path
   end
 
   private
