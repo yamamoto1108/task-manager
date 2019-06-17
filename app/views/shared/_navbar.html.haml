@@ -6,10 +6,10 @@
     %ul.navbar-nav.mr-auto
       %li.nav-item.active
         %a.nav-link{:href => "#"}
-          Home
+          My Page
           %span.sr-only (current)
       %li.nav-item
-        %a.nav-link{:href => "#"} Link
+        = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"
       %li.nav-item.dropdown
         %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
           Add
