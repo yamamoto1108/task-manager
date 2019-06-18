@@ -6,9 +6,8 @@
     #navbarSupportedContent.collapse.navbar-collapse
       %ul.navbar-nav.mr-auto
         %li.nav-item.active
-          %a.nav-link{:href => "#"}
-            My Page
-            %span.sr-only (current)
+          = link_to "My Page", user_path(current_user.id), class: "nav-link"
+          %span.sr-only (current)
         %li.nav-item
           = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"
         %li.nav-item.dropdown
