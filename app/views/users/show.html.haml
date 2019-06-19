@@ -1,0 +1,22 @@
+.mypage
+  %h2 About me
+  .profile
+    .profile__name
+      = @user.name
+    .profile__about
+      = @user.about
+
+  %ul.tab
+    %li.tab__menu.active Team
+    %li.tab__menu Cards
+
+  .tab__area
+    .tab__area__contents.show
+      .user__team
+        team.name
+    %table.tab__area__contents{cellpadding: "20"}
+      %tr
+        %th Card
+        %th LIMIT
+        %th Board From
+        %tr
