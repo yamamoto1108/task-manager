@@ -1,10 +1,12 @@
 .mypage
   %h2 About me
   .profile
+    .profile__image
+      = image_tag @user.image.variant(resize: "150x150") if @user.image.present?
     .profile__name
       = @user.name
-    .profile__about
-      = @user.about
+      .profile__about
+        = @user.about
 
   %ul.tab
     %li.tab__menu.active Team

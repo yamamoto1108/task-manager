@@ -11,6 +11,10 @@
       %br/
       = f.text_area :about, class: 'form-control'
     .form-group
+      = f.label :image, class: 'form-control-label'
+      %br/
+      = f.file_field :image
+    .form-group
       = f.label :email, class: 'form-control-label'
       %br/
       = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'

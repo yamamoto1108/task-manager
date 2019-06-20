@@ -34,6 +34,19 @@ ul {
 
 .profile {
   margin: 0 auto 30px;
-  width: 630px;
-  background-color: pink;
+  width: 500px;
+  //background-color: pink;
+  &__image {
+    display: inline-block;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  &__name {
+    display: inline-block;
+    font-size: 30px;
+    width: 350px;
+  }
+  &__about {
+    font-size: 16px;
+  }
 }
