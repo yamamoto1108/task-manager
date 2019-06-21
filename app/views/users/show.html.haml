@@ -2,9 +2,15 @@
   %h2 About me
   .profile
     .profile__image
-      = image_tag @user.image.variant(resize: "150x150") if @user.image.present?
+    - if @user.image.attached?
+      = image_tag @user.image.variant(resize: "130x130^"), class: "rounded-circle"
+    - else
+      = image_tag "person.jpeg", class: "rounded-circle", size: "130x130"
     .profile__name
       = @user.name
+      - if @user.id == current_user.id
+        =link_to edit_user_registration_path do
+          = icon 'fas', 'edit', class: 'icon'
       .profile__about
         = @user.about
 
