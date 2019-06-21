@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_21_091711) do
+ActiveRecord::Schema.define(version: 2019_06_21_092318) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 2019_06_21_091711) do
     t.integer "user_id"
   end
 
+  create_table "card_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "card_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_card_users_on_card_id"
+    t.index ["user_id"], name: "index_card_users_on_user_id"
+  end
+
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "about"
@@ -84,6 +93,8 @@ ActiveRecord::Schema.define(version: 2019_06_21_091711) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "card_users", "cards"
+  add_foreign_key "card_users", "users"
   add_foreign_key "cards", "lists"
   add_foreign_key "lists", "boards"
 end
