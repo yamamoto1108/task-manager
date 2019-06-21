@@ -5,9 +5,16 @@ class TeamsController < ApplicationController
   end
 
   def new
+    @team = Team.new
   end
 
   def create
+    @team = Team.new(team_params)
+    if @team.save
+      redirect_to team_path
+    else
+      render :new
+    end
   end
 
   def edit

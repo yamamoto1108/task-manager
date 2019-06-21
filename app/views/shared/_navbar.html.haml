@@ -15,9 +15,8 @@
             Add
           .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
             = link_to "Board", new_board_path, class: "dropdown-item"
-            %a.dropdown-item{:href => "#"} Another action
-            .dropdown-divider
-            %a.dropdown-item{:href => "#"} Something else here
+            = link_to "Team", new_team_path, class: "dropdown-item"
+            
         %li.nav-item
           %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled
       %form.form-inline.my-2.my-lg-0
