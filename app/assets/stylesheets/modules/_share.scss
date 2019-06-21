@@ -8,6 +8,10 @@ h2 {
   margin : 10px;
 }
 
+ul {
+  list-style: none;
+}
+
 .form__errors {
   color: red;
 }
@@ -26,4 +30,24 @@ h2 {
 
 .icon {
   color: #333;
+  font-size: 16px;
+}
+
+.profile {
+  margin: 0 auto 30px;
+  width: 530px;
+  //background-color: pink;
+  &__image {
+    display: inline-block;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  &__name {
+    display: inline-block;
+    font-size: 30px;
+    width: 350px;
+  }
+  &__about {
+    font-size: 16px;
+  }
 }

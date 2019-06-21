@@ -1,0 +1,41 @@
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.tab {
+  text-align: center;
+  padding-left: 0;
+  margin: 0;
+  border-bottom: 1px solid #4169e1;
+  &__area {
+    width: 700px;
+    margin: 10px auto;
+  }
+}
+  
+.tab__menu {
+  color: #333;
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #4169e1;
+  cursor: pointer;
+  transition: .3s;
+}
+.tab__menu.active {
+  color: #fff;
+  background: #4169e1;
+  cursor: auto;
+}
+ 
+.tab__area__contents {
+  display: none;
+}
+.tab__area__contents.show {
+  display: block;
+}
+
+.th {
+  padding: 10px;
+}
