@@ -3,5 +3,6 @@ class Board < ApplicationRecord
   has_many :lists, dependent: :destroy
   has_many :cards, through: :lists
   belongs_to :user
+  belongs_to :team, optional: true
   validates :name, presence: true
 end
