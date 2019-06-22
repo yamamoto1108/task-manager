@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :cards, through: :card_users
   has_many :team_users
   has_many :teams, through: :team_users
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   validates :name, presence: true
 
