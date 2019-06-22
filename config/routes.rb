@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     resources :cards, except: [:index]
   end
   resources :rooms, only: [:index, :show, :create]
+  resources :messages, only: [:create]
 end
