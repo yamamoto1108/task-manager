@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, except: :new
+  before_action :set_team, except: [:new, :create]
 
   def show
   end
@@ -11,7 +11,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      redirect_to team_path
+      redirect_to team_path(@team)
     else
       render :new
     end
@@ -21,6 +21,11 @@ class TeamsController < ApplicationController
   end
 
   def update
+    if @team.update(team_params)
+      redirect_to team_path(@team)
+    else
+      render :edit
+    end
   end
 
   def destroy

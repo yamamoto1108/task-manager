@@ -1,0 +1,27 @@
+.mypage
+  %h2 About our Team
+  .profile
+    .profile__image
+    - if @team.image.attached?
+      = image_tag @team.image.variant(resize: "130x130"), class: "rounded-circle"
+    - else
+      = image_tag "team.jpeg", class: "rounded-circle", size: "130x130"
+    .profile__name
+      = @team.name
+      = link_to edit_team_path(@team) do
+        = icon 'fas', 'edit', class: 'icon'
+      .profile__about
+        = @team.about
+
+  %ul.tab
+    %li.tab__menu.active Member
+    %li.tab__menu Boards
+
+  .tab__area
+    .tab__area__contents.show
+      .user__team
+        members
+    %table.tab__area__contents{cellpadding: "20"}
+      %tr
+        %th Board
+        %th LIMIT
