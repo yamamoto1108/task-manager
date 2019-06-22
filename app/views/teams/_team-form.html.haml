@@ -1,0 +1,22 @@
+.board__form
+  = form_for @team do |f|
+    - if @team.errors.any?
+      .form__errors
+        %h3= "#{@team.errors.full_messages.count}件のエラーが発生しました。"
+        %ul
+          - @team.errors.full_messages.each do |message|
+            %li= message
+    .form-group
+      = f.label :name, class: 'form-control-label'
+      %br/
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :about, class: 'form-control-label'
+      %br/
+      = f.text_area :about, class: 'form-control'
+    .form-group
+      = f.label :image, class: 'form-control-label'
+      %br/
+      = f.file_field :image
+    .form-group
+      = f.submit "Next", class: "btn btn-primary"
