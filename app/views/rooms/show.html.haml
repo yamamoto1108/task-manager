@@ -1,0 +1,12 @@
+%h2 Messages
+.room
+  .room__users
+    - @entries.each do |e|
+      = e.user.name
+  .room__messages
+    = render @messages
+  .room__post
+    = form_for @message do |f|
+      = f.text_field :content, placeholder: "Type a message!", class: "room__post__form"
+      = f.hidden_field :room_id, value: @room.id
+      = f.submit "SEND", class: "btn btn-primary"
