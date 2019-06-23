@@ -9,6 +9,8 @@
           = link_to "My Page", user_path(current_user.id), class: "nav-link"
           %span.sr-only (current)
         %li.nav-item
+          = link_to "Messages", rooms_path, class: "nav-link"
+        %li.nav-item
           = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"
         %li.nav-item.dropdown
           %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

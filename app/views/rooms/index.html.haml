@@ -1,0 +1,16 @@
+%h2 Messages
+.room
+  - @anotherEntries.each do |e|
+    = link_to room_path(e.room.id) do
+      .room__index
+        .room__index__image
+          - if e.user.image.attached?
+            = image_tag e.user.image.variant(resize: "70x70^"), class: "rounded-circle"
+          - else
+            = image_tag "person.jpeg", class: "rounded-circle", size: "70x70"
+        .room__index__text
+          = e.user.name
+          .room__index__text__date
+            更新：
+            = time_ago_in_words e.room.last_message
+            前
