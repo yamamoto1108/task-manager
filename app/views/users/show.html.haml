@@ -19,7 +19,7 @@
           = form_for @room do |f|
             = fields_for @entry do |e|
               = e.hidden_field :user_id, value: @user.id
-            = f.submit "DM", class: "btn btn-primary btn-sm"
+            = f.submit "DM", class: "btn btn-secondary btn-sm"
       .profile__about
         = @user.about
 
