@@ -20,6 +20,7 @@ class TeamsController < ApplicationController
   end
 
   def edit
+    @users = @team.users.where.not(id: current_user.id)
   end
 
   def update
@@ -36,7 +37,7 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name, :about, :image)
+    params.require(:team).permit(:name, :about, :image, user_ids: [])
   end
 
   def set_team

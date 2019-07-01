@@ -1,13 +1,25 @@
 $(function() {
   $(document).on('turbolinks:load', function() {
     function appendUser(user) {
-      var html = `<div>${user.name}</div>`
+      var html = `<div class="member__serch__result__list">
+                    <div class="user__name">${user.name}</div>
+                    <div class="member__add btn btn-outline-primary btn-sm">追加</div>
+                  </div>`
       $('#member__search__result').append(html);
+    }
+    function appendMember(user) {
+      var html = `<div class="team__member">
+                    <input name='team[user_ids][]' type='hidden' value='${user.id}'>
+                    <div class="user__name">${user.name}</div>
+                    <div class="member__delete btn btn-outline-danger btn-sm">削除</div>
+                  </div>`
+      $('#team__members').append(html);
     }
     function appendErrMsg(msg) {
       var html = `<div>${msg}</div>`
       $('#member__search__result').append(html);
     }
+
     $('#member__search').on('mouseover', function() {
       var input = $('#member__search__field').val();
       $.ajax({
@@ -21,6 +33,10 @@ $(function() {
         if (users.length !== 0) {
           users.forEach(function(user) {
             appendUser(user);
+            $('#member__search__result').on('click', '.member__add', function() {
+              appendMember(user);
+              $(this).parent().remove();
+            })
           });
         }
         else {
@@ -31,5 +47,8 @@ $(function() {
         alert('ユーザーを検索できませんでした');
       })
     })
+    $("#team__members").on("click", ".member__delete", function() {
+      $(this).parent().remove();
+    });
   });
 });

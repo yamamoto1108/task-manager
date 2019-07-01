@@ -29,15 +29,15 @@
         [Team Members]
         .team__member
           %input{name: "team[user_ids][]", type: "hidden", value: current_user.id}
-          %p.team__user__name
+          %p.user__name
             = current_user.name
 
-        - if users.present?
-          - users.each do |user|
+        - if @users.present?
+          - @users.each do |user|
             .team__member
               %input{name: "team[user_ids][]", type: "hidden", value: user.id}
-              %p.team__member__name
+              %p.user__name
                 = user.name
-              %button{class: "team__member__delete btn btn-outline-danger btn-sm"} Delete
+              %button{class: "member__delete btn btn-outline-danger btn-sm"} Delete
     .form-group
       = f.submit "Save", class: "btn btn-primary"
