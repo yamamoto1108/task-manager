@@ -6,6 +6,8 @@ class TeamsController < ApplicationController
 
   def new
     @team = Team.new
+    @team.users << current_user
+    @users = @team.users.where.not(id: current_user.id)
   end
 
   def create

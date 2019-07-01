@@ -19,4 +19,25 @@
       %br/
       = f.file_field :image
     .form-group
-      = f.submit "Next", class: "btn btn-primary"
+      %label Add member
+      %br/
+      %input#member__search__field{placeholder: 'ユーザー名を入力', type: 'text', name: 'keyword'}
+      %button{class: "btn btn-outline-success btn-sm",id: "member__search"} Search
+      #member__search__result
+
+      #team__members
+        [Team Members]
+        .team__member
+          %input{name: "team[user_ids][]", type: "hidden", value: current_user.id}
+          %p.team__user__name
+            = current_user.name
+
+        - if users.present?
+          - users.each do |user|
+            .team__member
+              %input{name: "team[user_ids][]", type: "hidden", value: user.id}
+              %p.team__member__name
+                = user.name
+              %button{class: "team__member__delete btn btn-outline-danger btn-sm"} Delete
+    .form-group
+      = f.submit "Save", class: "btn btn-primary"
