@@ -21,7 +21,15 @@
           = link_to user_path(user) do
             = user_icon_small(user)
             = user.name
-    %table.tab__area__contents{cellpadding: "20"}
-      %tr
-        %th Board
-        %th LIMIT
+    .tab__area__contents
+      - @team.boards.each do |board|
+        .board__link
+          = link_to board_path(board.id), class: "link" do
+            .board__link{style: "background-image: url(#{board.background.image})"}
+              .bkrgba
+                .board__name
+                  = board.name
+          .board__deadline
+            = icon 'far', 'clock'
+            = board.deadline
+

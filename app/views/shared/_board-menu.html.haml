@@ -7,14 +7,21 @@
     %ul.navbar-nav.mr-auto
       %li.nav-item.active
         - if @board.team_id.present?
-          = link_to "#{@board.team.name}", team_path(@board.team.id), class: "nav-link"
+          .nav-link
+            = link_to "#{@board.team.name}", team_path(@board.team.id), class: "nav-link"
         - else
-          = link_to "Personal", user_path(@board.user.id), class: "nav-link"
+          .nav-link
+            = link_to "Personal", user_path(@board.user.id), class: "nav-link"
       %li.nav-item
         - if @board.team_id.present?
-          - @board.team.users.each do |user|
-            = link_to user_path(user) do
-              = user_icon_small(user)
+          .nav-link
+            - @board.team.users.each do |user|
+              = link_to user_path(user) do
+                = user_icon_small(user)
+      %li.nav-item
+        .nav-link.disable
+          [LIMIT]
+          = @board.deadline
       %li.nav-item
         .nav-link
           = link_to "Add Card", new_board_card_path(@board.id), remote: true, class: "btn btn-outline-secondary btn-sm"
