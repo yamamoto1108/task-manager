@@ -20,7 +20,7 @@ $(function() {
       $('#member__search__result').append(html);
     }
 
-    $('#member__search').on('mouseover', function() {
+    $('#member__search').on('click', function() {
       var input = $('#member__search__field').val();
       $.ajax({
         type: 'GET',
