@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
+    @users = User.where(name: (params[:keyword])).where.not(id: current_user.id)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def show

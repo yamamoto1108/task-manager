@@ -2,10 +2,7 @@
   %h2 About our Team
   .profile
     .profile__image
-    - if @team.image.attached?
-      = image_tag @team.image.variant(resize: "130x130"), class: "rounded-circle"
-    - else
-      = image_tag "team.jpeg", class: "rounded-circle", size: "130x130"
+      = team_icon_large(@team)
     .profile__name
       = @team.name
       = link_to edit_team_path(@team) do
@@ -19,9 +16,20 @@
 
   .tab__area
     .tab__area__contents.show
-      .user__team
-        members
-    %table.tab__area__contents{cellpadding: "20"}
-      %tr
-        %th Board
-        %th LIMIT
+      - @team.users.each do |user|
+        .tab__area__content
+          = link_to user_path(user) do
+            = user_icon_small(user)
+            = user.name
+    .tab__area__contents
+      - @team.boards.each do |board|
+        .board__link
+          = link_to board_path(board.id), class: "link" do
+            .board__link{style: "background-image: url(#{board.background.image})"}
+              .bkrgba
+                .board__name
+                  = board.name
+          .board__deadline
+            = icon 'far', 'clock'
+            = board.deadline
+
