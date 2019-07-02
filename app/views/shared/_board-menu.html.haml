@@ -18,6 +18,8 @@
             - @board.team.users.each do |user|
               = link_to user_path(user) do
                 = user_icon_small(user)
+                %p.icon-user
+                  = user.name
       %li.nav-item
         .nav-link.disable
           [LIMIT]

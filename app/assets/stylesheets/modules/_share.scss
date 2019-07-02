@@ -33,6 +33,32 @@ ul {
   font-size: 16px;
 }
 
+.icon-user {
+  display: none;
+  position: absolute;
+  padding: 10px;
+  background: #e3f2fd;
+  border-radius: 10px;
+}
+
+.icon-user:after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50%;
+  bottom: 100%;
+  margin-left: -10px;
+  border: solid transparent;
+  border-color: rgba(51, 51, 51, 0);
+  border-bottom-color: #e3f2fd;
+  border-width: 10px;
+  pointer-events: none;
+  content: " ";
+}
+.rounded-circle:hover + .icon-user {
+  display: block;
+}
+
 .profile {
   margin: 0 auto 30px;
   width: 530px;
@@ -53,4 +79,13 @@ ul {
 
 .bold {
   font-weight: bold;
+}
+
+.check-box label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.rounded-circle {
+  position: relative;
 }

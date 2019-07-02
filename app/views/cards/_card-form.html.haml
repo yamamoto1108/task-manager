@@ -28,6 +28,12 @@
           = f.label :deadline, class: 'form-control-label'
           %br/
           = f.date_field :deadline, class: 'form-control'
+        - if @board.team.present?
+          .form-group
+            = f.label :"Assined Member", class: 'form-control-label'
+            %br/
+            .check-box
+              = f.collection_check_boxes :user_ids, @board.team.users.all, :id, :name
         .form-group
           = f.label :"Are you done this Task?", class: 'form-control-label'
           %br/

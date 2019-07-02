@@ -9,6 +9,12 @@
       .card__content [説明]
       .card__content__child
         = card.about
+      .card__content [メンバー]
+      .card__content__child
+        - card.users.each do |user|
+          = user_icon_small(user)
+          %p.icon-user
+            = user.name
       .card__content [期限]
       .card__content__child
         = card.deadline
