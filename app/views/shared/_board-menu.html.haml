@@ -1,26 +1,28 @@
 %nav.navbar.navbar-expand-lg.navbar-light{:style => "background-color: #e3f2fd;"}
-  %a.navbar-brand{:href => "#"}
+  .navbar-brand
     = @board.name
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
       %li.nav-item.active
-        %a.nav-link{:href => "#"}
-          Home
-          %span.sr-only (current)
+        - if @board.team_id.present?
+          = link_to "#{@board.team.name}", team_path(@board.team.id), class: "nav-link"
+        - else
+          = link_to "Personal", user_path(@board.user.id), class: "nav-link"
       %li.nav-item
-        %a.nav-link{:href => "#"} Link
-      %li.nav-item.dropdown
-        %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          Board Menu
-        .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-          = link_to "Edit Board", edit_board_path(@board.id), class: "dropdown-item"
-          = link_to "Delete Board", board_path(@board.id), method: :delete, class: "dropdown-item", "data-dismiss" => "modal", data: { confirm: "ボードを削除しますか？", commit: "DELETE", cancel: "Cancel"}, title: "DELETE Board"
-          
+        - if @board.team_id.present?
+          - @board.team.users.each do |user|
+            = link_to user_path(user) do
+              = user_icon_small(user)
       %li.nav-item
-        %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled
-    .nav-item.my-2.my-lg-0
-      .nav-link
-        = link_to "Add Card", new_board_card_path(@board.id), remote: true, class: "btn btn-outline-secondary btn-sm"
-        #card-form.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+        .nav-link
+          = link_to "Add Card", new_board_card_path(@board.id), remote: true, class: "btn btn-outline-secondary btn-sm"
+          #card-form.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+
+    .nav-item.my-2.my-lg-0.dropdown
+      %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+        Board Menu
+      .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+        = link_to "Edit Board", edit_board_path(@board.id), class: "dropdown-item"
+        = link_to "Delete Board", board_path(@board.id), method: :delete, class: "dropdown-item", "data-dismiss" => "modal", data: { confirm: "ボードを削除しますか？", commit: "DELETE", cancel: "Cancel"}, title: "DELETE Board"
