@@ -1,7 +1,7 @@
 $(function() {
   $(document).on('turbolinks:load', function() {
     function appendUser(user) {
-      var html = `<div class="member__serch__result__list">
+      var html = `<div class="member__search__result__list">
                     <div class="user__name">${user.name}</div>
                     <div class="member__add btn btn-outline-primary btn-sm">追加</div>
                   </div>`
@@ -33,7 +33,7 @@ $(function() {
         if (users.length !== 0) {
           users.forEach(function(user) {
             appendUser(user);
-            $('#member__search__result').on('click', '.member__add', function() {
+            $('.member__search__result__list').on('click', '.member__add', function() {
               appendMember(user);
               $(this).parent().remove();
             })
