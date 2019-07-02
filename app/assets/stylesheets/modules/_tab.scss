@@ -10,8 +10,11 @@
   margin: 0;
   border-bottom: 1px solid #4169e1;
   &__area {
-    width: 700px;
+    width: 530px;
     margin: 10px auto;
+    &__content {
+      margin: 10px;
+    }
   }
 }
   

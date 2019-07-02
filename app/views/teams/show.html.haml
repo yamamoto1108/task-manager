@@ -2,10 +2,7 @@
   %h2 About our Team
   .profile
     .profile__image
-    - if @team.image.attached?
-      = image_tag @team.image.variant(resize: "130x130"), class: "rounded-circle"
-    - else
-      = image_tag "team.jpeg", class: "rounded-circle", size: "130x130"
+      = team_icon_large(@team)
     .profile__name
       = @team.name
       = link_to edit_team_path(@team) do
@@ -19,8 +16,11 @@
 
   .tab__area
     .tab__area__contents.show
-      .user__team
-        members
+      - @team.users.each do |user|
+        .tab__area__content
+          = link_to user_path(user) do
+            = user_icon_small(user)
+            = user.name
     %table.tab__area__contents{cellpadding: "20"}
       %tr
         %th Board
