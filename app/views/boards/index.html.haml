@@ -1,10 +1,21 @@
 .board
   %h2 My Boards
   .board__index
-    %p Personal
-    - @boards.each do |board|
+    %p.bold [Personal]
+    - @pboards.each do |board|
       = link_to board_path(board.id), class: "link" do
         .board__link{style: "background-image: url(#{board.background.image})"}
           .bkrgba
             .board__name
               = board.name
+    %p.bold [Team]
+    - current_user.teams.each do |team|
+      .team-boards
+        = team.name
+      .team-boards
+      - team.boards.each do |board|
+        = link_to board_path(board.id), class: "link" do
+          .board__link{style: "background-image: url(#{board.background.image})"}
+            .bkrgba
+              .board__name
+                = board.name
