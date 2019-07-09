@@ -30,10 +30,11 @@
             = f.submit "Submit", class: "btn btn-primary btn-sm"
       - if comments
         - comments.each do |comment|
-          .comment-user
-            = comment.user.name
-          .comment-text
-            = comment.text
+          .comment
+            .comment-user.bold
+              = comment.user.name
+            .comment-text
+              = comment.text
     .modal-footer
       %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
       = link_to 'Edit Card', edit_board_card_path(@board), remote: true, class: 'btn btn-success', "data-dismiss" => "modal"
