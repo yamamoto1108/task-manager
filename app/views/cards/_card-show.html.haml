@@ -21,6 +21,19 @@
       .card__content [完了状態]
       .card__content__child
         = card.finish
+      
+      .card__content [コメント]
+      .card__content__child
+        = form_for [@board, @card, @comment] do |f|
+          .form-group
+            = f.text_area :text, class: 'form-control', placeholder: "write comments"
+            = f.submit "Submit", class: "btn btn-primary btn-sm"
+      - if comments
+        - comments.each do |comment|
+          .comment-user
+            = comment.user.name
+          .comment-text
+            = comment.text
     .modal-footer
       %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
       = link_to 'Edit Card', edit_board_card_path(@board), remote: true, class: 'btn btn-success', "data-dismiss" => "modal"

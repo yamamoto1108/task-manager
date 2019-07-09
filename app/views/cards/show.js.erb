@@ -1,2 +1,2 @@
-$("#card-show").html("<%= escape_javascript(render 'card-show', card: @card) %>")
+$("#card-show").html("<%= escape_javascript(render 'card-show', card: @card, comments: @comments) %>")
 $("#card-show").modal("show")

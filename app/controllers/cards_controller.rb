@@ -3,6 +3,8 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   def show
+    @comment = Comment.new
+    @comments = @card.comments
   end
 
   def new
