@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :teams, except: :index
   resources :boards do
     resources :lists, except: [:index, :show]
-    resources :cards, except: [:index]
+    resources :cards, except: [:index] do
+      resources :comments, only: [:create]
+    end
   end
   resources :rooms, only: [:index, :show, :create]
   resources :messages, only: [:create]
