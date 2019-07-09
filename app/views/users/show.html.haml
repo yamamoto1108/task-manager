@@ -33,8 +33,17 @@
             = team.name
 
     %table.tab__area__contents{cellpadding: "20"}
-      %tr
-        %th Card
-        %th LIMIT
-        %th Board From
+      %thead
         %tr
+          %th Card
+          %th LIMIT
+          %th Board From
+      - @user.cards.each do |card|
+        %tbody
+          %tr
+            %td
+              = card.name
+            %td
+              = card.deadline
+            %td
+              = link_to "#{card.list.board.name}", board_path(card.list.board.id)
