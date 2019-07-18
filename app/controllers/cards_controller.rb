@@ -4,7 +4,7 @@ class CardsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @card.comments
+    @comments = @card.comments.includes(:user).order("created_at DESC")
   end
 
   def new

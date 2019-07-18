@@ -1,8 +1,11 @@
 class CommentsController < ApplicationController
   def create
     @board = Board.find(params[:board_id])
-    Comment.create(comment_params)
-    redirect_to board_path(@board.id)
+    @comment = Comment.create(comment_params)
+    respond_to do |format|
+      #format.html { redirect_to board_path(@board) }
+      format.json
+    end
   end
 
   private

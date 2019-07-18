@@ -28,13 +28,16 @@
           .form-group
             = f.text_area :text, class: 'form-control', placeholder: "write comments"
             = f.submit "Submit", class: "btn btn-primary btn-sm"
-      - if comments
-        - comments.each do |comment|
-          .comment
-            .comment-user.bold
-              = comment.user.name
-            .comment-text
-              = comment.text
+      .comments
+        - if comments
+          - comments.each do |comment|
+            .comment
+              .comment-user.bold
+                = comment.user.name
+              .comment-time
+                = comment.created_at.strftime("%Y/%m/%d %H:%M")
+              .comment-text
+                = comment.text
     .modal-footer
       %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
       = link_to 'Edit Card', edit_board_card_path(@board), remote: true, class: 'btn btn-success', "data-dismiss" => "modal"
