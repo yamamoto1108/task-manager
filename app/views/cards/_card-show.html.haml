@@ -21,6 +21,18 @@
       .card__content [完了状態]
       .card__content__child
         = card.finish
+
+      .card__content [添付ファイル]
+      .card__images
+        - if card.images
+          - card.images.each do |image|
+            = image_tag image, class: "card-image"
+      .card__content__child
+        = form_for [@board, @card] do |f|
+          .form-group
+            = f.file_field :images, multiple: true
+            = f.submit "Add File", class: "btn btn-primary btn-sm"
+        
       
       .card__content [コメント]
       .card__content__child
