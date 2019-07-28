@@ -1,9 +1,24 @@
 .card
-  .card__title
+  .card__title.bold
     = link_to "#{card.name}", board_card_path(@board, card), remote: true, class: "card__title"
     #card-show.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   
   - if card.deadline.present?
-    .card__deadline
+    .card__icon
       = icon 'far', 'clock'
       = card.deadline
+  .card__icons
+    - if card.comments.present?
+      .card__icon
+        = icon 'far', 'comment'
+        = card.comments.length
+    - if card.users.present?
+      .card__icon
+        = icon 'far', 'user'
+        = card.users.length
+    - if (card.finish == "doing")
+      .card__icon
+        = icon 'fas', 'running'
+    - else
+      .card__icon__done
+        = icon 'fas', 'check'

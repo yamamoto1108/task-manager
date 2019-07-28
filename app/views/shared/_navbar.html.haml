@@ -10,14 +10,14 @@
           %span.sr-only (current)
         %li.nav-item
           = link_to "Messages", rooms_path, class: "nav-link"
-        %li.nav-item
-          = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"
         %li.nav-item.dropdown
           %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Add
           .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
             = link_to "Board", new_board_path, class: "dropdown-item"
             = link_to "Team", new_team_path, class: "dropdown-item"
+        %li.nav-item
+          = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"
             
         %li.nav-item
           %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled
