@@ -3,6 +3,8 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   def show
+    @comment = Comment.new
+    @comments = @card.comments.includes(:user).order("created_at DESC")
   end
 
   def new
@@ -45,6 +47,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:name, :about, :deadline, :finish, :list_id, user_ids: [])
+    params.require(:card).permit(:name, :about, :deadline, :finish, :list_id, images: [], user_ids: [])
   end
 end

@@ -21,6 +21,35 @@
       .card__content [完了状態]
       .card__content__child
         = card.finish
+
+      .card__content [添付ファイル]
+      .card__images
+        - if card.images
+          - card.images.each do |image|
+            = image_tag image, class: "card-image"
+      .card__content__child
+        = form_for [@board, @card] do |f|
+          .form-group
+            = f.file_field :images, multiple: true
+            = f.submit "Add File", class: "btn btn-primary btn-sm"
+        
+      
+      .card__content [コメント]
+      .card__content__child
+        = form_for [@board, @card, @comment] do |f|
+          .form-group
+            = f.text_area :text, class: 'form-control', placeholder: "write comments"
+            = f.submit "Submit", class: "btn btn-primary btn-sm"
+      .comments
+        - if comments
+          - comments.each do |comment|
+            .comment
+              .comment-user
+                = user_icon_small(comment.user)
+              .comment-time
+                = comment.created_at.strftime("%Y/%m/%d %H:%M")
+              .comment-text
+                = comment.text
     .modal-footer
       %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
       = link_to 'Edit Card', edit_board_card_path(@board), remote: true, class: 'btn btn-success', "data-dismiss" => "modal"

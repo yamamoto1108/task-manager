@@ -1,15 +1,51 @@
 .card {
-  margin: 10px;
-  padding: 0 10px;
+  margin: 10px 0;
+  padding: 10px;
   &__title {
     color: #333;
   }
   &__content {
     font-size: 15px;
     font-weight: bold;
+    &__child {
+      font-weight: normal;
+      padding-left: 10px;
+      margin-bottom: 10px;
+    }
   }
-  &__deadline {
+  &__icon {
     display: inline-block;
     font-size: 15px;
+    margin-right: 5px;
+    &__done {
+      color: #00CC33;
+      display: inline-block;
+    }
   }
+}
+
+.icon {
+  display: inline;
+}
+
+.comment {
+  margin: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+.comment-user {
+  display: inline;
+}
+.comment-time {
+  display: inline;
+  color: #888;
+  font-size: 12px;
+}
+.comment-text {
+  font-weight: normal;
+  padding-left: 15px;
+}
+
+.card-image {
+  height: 100px;
+  margin: 5px;
 }

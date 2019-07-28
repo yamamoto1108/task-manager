@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :teams, through: :team_users
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_many :comments
 
   validates :name, presence: true
 
