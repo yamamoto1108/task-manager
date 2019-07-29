@@ -1,0 +1,28 @@
+.home {
+  &__containt {
+    &--1 {
+      min-height: calc(100vh - 60px);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    &--2 {
+      height: 100vh;
+      width: 750px;
+      margin: 0 auto;
+      background: #aaa;
+    }
+    &__left {
+      height: 100vh;
+      width: 200px;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
+
+.title {
+  font-size: 50px;
+  text-align: center;
+  line-height: 80vh;
+  color: #aaa;
+}
