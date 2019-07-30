@@ -15,6 +15,11 @@
         = f.label :remember_me
     .actions
       = f.submit "Log in", class: "btn btn-primary"
-      %br/
-      %br/
+  %br/
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    = f.hidden_field :email, value: 'testuser@gmail.com'
+    = f.hidden_field :password, value: 'password'
+    = f.submit "テストユーザーでログイン", class: "btn btn-success"
+    %br/
+    %br/
   = render "devise/shared/links"
