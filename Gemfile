@@ -75,4 +75,4 @@ gem 'mechanize'
 gem 'rails-i18n'
 gem 'data-confirm-modal'
 gem 'devise'
-gem 'mini_magick'
+gem "mini_magick", ">= 4.9.4"
