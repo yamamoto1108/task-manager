@@ -16,8 +16,11 @@
       = f.text_area :about, class: 'form-control'
     .form-group
       = f.label :image, class: 'form-control-label'
+      #img_prev
+        -if @team.image.attached?
+          = image_tag @team.image.variant(resize: "100x100"), class: "rounded-circle"
       %br/
-      = f.file_field :image
+      = f.file_field :image, id: "file_img"
     .form-group
       %label Add member
       %br/

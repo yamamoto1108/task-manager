@@ -31,9 +31,7 @@
         = form_for [@board, @card] do |f|
           .form-group
             = f.file_field :images, multiple: true
-            = f.submit "Add File", class: "btn btn-primary btn-sm"
-        
-      
+            = f.submit "Save File", class: "btn btn-primary btn-sm"
       .card__content [コメント]
       .card__content__child
         = form_for [@board, @card, @comment] do |f|
