@@ -16,7 +16,9 @@ $(document).on('turbolinks:load', function() {
         $preview.append($('<img>').attr({
                   src: e.target.result,
                   height: "100px",
+                  width: "100px",
                   class: "rounded-circle",
+                  style: "object-fit: cover;",
                   title: file.name
               }));
       };

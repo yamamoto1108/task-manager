@@ -61,17 +61,22 @@ ul {
 }
 
 .profile {
-  margin: 0 auto 30px;
+  margin: 10px auto 30px;
   width: 530px;
+  &__inner {
+    margin:0 auto;
+    display: flex;
+  }
   &__image {
-    display: inline-block;
-    margin-right: 20px;
+    max-width: 180px;
+    height: auto;
     border-radius: 50%;
   }
   &__name {
-    display: inline-block;
+    margin-left: 10px;
     font-size: 30px;
     width: 350px;
+    word-wrap: break-word;
   }
   &__about {
     font-size: 16px;

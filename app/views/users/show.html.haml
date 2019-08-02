@@ -1,23 +1,24 @@
 .mypage
   .profile
-    .profile__image
-    = user_icon_large(@user)
-    .profile__name
-      = @user.name
-      - if @user.id == current_user.id
-        = link_to edit_user_registration_path do
-          = icon 'fas', 'edit', class: 'icon'
-      - else
-        - if @isRoom == true
-          = link_to room_path(@roomId) do
-            = icon 'far', 'envelope', class: 'icon'
+    .profile__inner
+      .profile__image
+        = user_icon_large(@user)
+      .profile__name
+        = @user.name
+        - if @user.id == current_user.id
+          = link_to edit_user_registration_path do
+            = icon 'fas', 'edit', class: 'icon'
         - else
-          = form_for @room do |f|
-            = fields_for @entry do |e|
-              = e.hidden_field :user_id, value: @user.id
-            = f.submit "DM", class: "btn btn-secondary btn-sm"
-      .profile__about
-        = @user.about
+          - if @isRoom == true
+            = link_to room_path(@roomId) do
+              = icon 'far', 'envelope', class: 'icon'
+          - else
+            = form_for @room do |f|
+              = fields_for @entry do |e|
+                = e.hidden_field :user_id, value: @user.id
+              = f.submit "DM", class: "btn btn-secondary btn-sm"
+        .profile__about
+          = @user.about
 
   %ul.tab
     %li.tab__menu.active Team

@@ -1,13 +1,14 @@
 .mypage
   .profile
-    .profile__image
-      = team_icon_large(@team)
-    .profile__name
-      = @team.name
-      = link_to edit_team_path(@team) do
-        = icon 'fas', 'edit', class: 'icon'
-      .profile__about
-        = @team.about
+    .profile__inner
+      .profile__image
+        = team_icon_large(@team)
+      .profile__name
+        = @team.name
+        = link_to edit_team_path(@team) do
+          = icon 'fas', 'edit', class: 'icon'
+        .profile__about
+          = @team.about
 
   %ul.tab
     %li.tab__menu.active Member

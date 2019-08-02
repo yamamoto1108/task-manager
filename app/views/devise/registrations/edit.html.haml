@@ -6,7 +6,7 @@
       = f.label :image, class: 'form-control-label'
       #img_prev
         - if @user.image.attached?
-          = image_tag @user.image.variant(resize: "100x100"), class: "rounded-circle"
+          = image_tag @user.image, class: "rounded-circle", style: "object-fit: cover;", size:"100x100"
           %br/
           %br/
       = f.file_field :image, id: "file_img"
