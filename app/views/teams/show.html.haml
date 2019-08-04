@@ -29,7 +29,8 @@
               .bkrgba
                 .board__name
                   = board.name
-          .board__deadline
-            = icon 'far', 'clock'
-            = board.deadline
+          - if board.deadline.present?
+            .board__deadline
+              = icon 'far', 'clock'
+              = board.deadline
 
