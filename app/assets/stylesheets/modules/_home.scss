@@ -9,6 +9,9 @@
       height: 100vh;
       width: 750px;
       margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       //background: #aaa;
     }
     &--3 {
@@ -21,10 +24,9 @@
       padding: 10px 0;
     }
     &__left {
-      height: 100vh;
+      margin: 10px;
       width: 200px;
-      display: table-cell;
-      vertical-align: middle;
+
     }
   }
 }
