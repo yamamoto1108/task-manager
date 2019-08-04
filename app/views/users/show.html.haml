@@ -1,23 +1,24 @@
 .mypage
   .profile
-    .profile__image
-    = user_icon_large(@user)
-    .profile__name
-      = @user.name
-      - if @user.id == current_user.id
-        = link_to edit_user_registration_path do
-          = icon 'fas', 'edit', class: 'icon'
-      - else
-        - if @isRoom == true
-          = link_to room_path(@roomId) do
-            = icon 'far', 'envelope', class: 'icon'
+    .profile__inner
+      .profile__image
+        = user_icon_large(@user)
+      .profile__name
+        = @user.name
+        - if @user.id == current_user.id
+          = link_to edit_user_registration_path do
+            = icon 'fas', 'edit', class: 'icon'
         - else
-          = form_for @room do |f|
-            = fields_for @entry do |e|
-              = e.hidden_field :user_id, value: @user.id
-            = f.submit "DM", class: "btn btn-secondary btn-sm"
-      .profile__about
-        = @user.about
+          - if @isRoom == true
+            = link_to room_path(@roomId) do
+              = icon 'far', 'envelope', class: 'icon'
+          - else
+            = form_for @room do |f|
+              = fields_for @entry do |e|
+                = e.hidden_field :user_id, value: @user.id
+              = f.submit "DM", class: "btn btn-secondary btn-sm"
+        .profile__about
+          = @user.about
 
   %ul.tab
     %li.tab__menu.active Team
@@ -31,18 +32,37 @@
             = team_icon_small(team)
             = team.name
 
-    %table.tab__area__contents{cellpadding: "20"}
-      %thead
-        %tr
-          %th Card
-          %th LIMIT
-          %th Board From
-      - @user.cards.each do |card|
-        %tbody
-          %tr
-            %td
-              = card.name
-            %td
-              = card.deadline
-            %td
-              = link_to "#{card.list.board.name}", board_path(card.list.board.id)
+    .tab__area__contents
+      - if @user.cards.present?
+        - @user.teams.each do |team|
+          .team-name.bold
+            = team.name
+          - team.boards.each do |board|
+            .board-name
+              = link_to "#{board.name}", board_path(board.id)
+              %div
+              - @user.cards.each do |card|
+                - if card.list.board_id == board.id
+                  .card-info
+                    .card__title.bold
+                      = link_to "#{card.name}", board_card_path(board.id, card.id), remote: true
+                      #card-show.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+                    - if card.deadline.present?
+                      .card__icon
+                        = icon 'far', 'clock'
+                        = card.deadline
+                    .card__icons
+                      - if card.comments.present?
+                        .card__icon
+                          = icon 'far', 'comment'
+                          = card.comments.length
+                      - if card.users.present?
+                        .card__icon
+                          = icon 'far', 'user'
+                          = card.users.length
+                      - if (card.finish == "doing")
+                        .card__icon
+                          = icon 'fas', 'running'
+                      - else
+                        .card__icon__done
+                          = icon 'fas', 'check'

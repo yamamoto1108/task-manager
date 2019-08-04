@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @board = Board.find(params[:board_id])
     @comment = Comment.create(comment_params)
     respond_to do |format|
-      #format.html { redirect_to board_path(@board) }
+      format.html { redirect_to board_path(@board) }
       format.json
     end
   end

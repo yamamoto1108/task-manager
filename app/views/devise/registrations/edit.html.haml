@@ -3,11 +3,13 @@
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
     = render "devise/shared/error_messages", resource: resource
     .form-group
-      - if @user.image.attached?
-        = image_tag @user.image.variant(resize: "100x100"), class: "rounded-circle"
-        %br/
-        %br/
-      = f.file_field :image
+      = f.label :image, class: 'form-control-label'
+      #img_prev
+        - if @user.image.attached?
+          = image_tag @user.image, class: "rounded-circle", style: "object-fit: cover;", size:"100x100"
+          %br/
+          %br/
+      = f.file_field :image, id: "file_img"
     .form-group
       = f.label :name, class: 'form-control-label'
       %br/

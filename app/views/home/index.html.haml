@@ -1,0 +1,19 @@
+.home
+  %section
+    .home__containt--1{ style: "background-image: url(https://d1f5hsy4d47upe.cloudfront.net/85/8544da483fa6ab971a49af850b607094_t.jpeg)"}
+      .title Task-manager
+  %section{ style: "background-color: #ffffee"}
+    .home__containt--2
+      .home__containt__left
+        Task-managerは、ボード、リスト、カードを使ってTaskを見える化し管理できるアプリです。
+      .home__containt__right
+        = image_tag "board_sample.png", width: "500px"
+  %section{ style: "background-color: #eeffff"}
+    .home__containt--3
+      How to use?
+      .slick
+        .slide 1
+        .slide 2
+      .sign-in_and_log-in
+        = link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary"
+        = link_to "Log in", new_user_session_path, class: "btn btn-outline-primary"

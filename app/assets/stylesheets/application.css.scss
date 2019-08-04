@@ -1,6 +1,9 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "bootstrap";
+@import "slick-theme"; 
+@import "slick";
+@import "./reset";
 @import "./modules/background";
 @import "./modules/boards";
 @import "./modules/share";
@@ -10,3 +13,4 @@
 @import "./modules/tab";
 @import "./modules/team";
 @import "./modules/rooms";
+@import "./modules/home";

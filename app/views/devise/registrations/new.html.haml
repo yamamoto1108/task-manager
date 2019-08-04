@@ -12,8 +12,9 @@
       = f.text_area :about, class: 'form-control'
     .form-group
       = f.label :image, class: 'form-control-label'
+      #img_prev
       %br/
-      = f.file_field :image
+      = f.file_field :image, id: "file_img"
     .form-group
       = f.label :email, class: 'form-control-label'
       %br/
@@ -31,6 +32,11 @@
       = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
     .actions
       = f.submit "Sign up", class: "btn btn-primary"
-      %br/
-      %br/
+  %br/
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    = f.hidden_field :email, value: 'testuser@gmail.com'
+    = f.hidden_field :password, value: 'password'
+    = f.submit "テストユーザーでログイン", class: "btn btn-success"
+    %br/
+    %br/
   = render "devise/shared/links"

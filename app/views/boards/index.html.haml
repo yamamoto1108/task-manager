@@ -9,13 +9,14 @@
             .bkrgba
               .board__name
                 = board.name
-        .board__deadline
-          = icon 'far', 'clock'
-          = board.deadline
+        - if board.deadline.present?
+          .board__deadline
+            = icon 'far', 'clock'
+            = board.deadline
     %p.bold [Team]
     - current_user.teams.each do |team|
       .team-name
-        = team.name
+        = link_to "#{team.name}", team_path(team.id)
       .team-boards
         - team.boards.each do |board|
           .board__link
@@ -24,6 +25,7 @@
                 .bkrgba
                   .board__name
                     = board.name
-            .board__deadline
-              = icon 'far', 'clock'
-              = board.deadline
+            - if board.deadline.present?
+              .board__deadline
+                = icon 'far', 'clock'
+                = board.deadline

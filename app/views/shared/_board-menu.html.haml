@@ -1,4 +1,4 @@
-%nav.navbar.navbar-expand-lg.navbar-light{:style => "background-color: #e3f2fd;"}
+%nav.navbar.navbar-expand-lg
   .navbar-brand
     = @board.name
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
@@ -21,9 +21,10 @@
                 %p.icon-user
                   = user.name
       %li.nav-item
-        .nav-link.disable
-          = icon 'far', 'clock'
-          = @board.deadline
+        - if @board.deadline.present?
+          .nav-link.disable
+            = icon 'far', 'clock'
+            = @board.deadline
       %li.nav-item
         .nav-link
           = link_to "Add Card", new_board_card_path(@board.id), remote: true, class: "btn btn-outline-secondary btn-sm"
