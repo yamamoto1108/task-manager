@@ -99,3 +99,16 @@ ul {
 .new_room {
   display: inline;
 }
+
+.board-name {
+  border-bottom: 1px dashed #ccc;
+  padding: 10px;
+}
+
+.card-info {
+  padding: 10px;
+  margin: 10px;
+  width: 230px;
+  border: 1px solid #ccc;
+  display: inline-block;
+}
