@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_team, except: [:new, :create]
 
   def show
