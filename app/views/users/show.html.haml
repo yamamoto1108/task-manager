@@ -35,36 +35,38 @@
               = team.name
 
     .tab__area__contents
-      - if @user.cards.present?
+      - if @user.teams.present?
         - @user.teams.each do |team|
           .team-name.bold
             = team.name
-          - team.boards.each do |board|
-            .board-name
-              = link_to "#{board.name}", board_path(board.id)
-              %div
-              - @user.cards.each do |card|
-                - if card.list.board_id == board.id
-                  .card-info
-                    .card__title.bold
-                      = link_to "#{card.name}", board_card_path(board.id, card.id), remote: true
-                      #card-show.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
-                    - if card.deadline.present?
-                      .card__icon
-                        = icon 'far', 'clock'
-                        = card.deadline
-                    .card__icons
-                      - if card.comments.present?
-                        .card__icon
-                          = icon 'far', 'comment'
-                          = card.comments.length
-                      - if card.users.present?
-                        .card__icon
-                          = icon 'far', 'user'
-                          = card.users.length
-                      - if (card.finish == "doing")
-                        .card__icon
-                          = icon 'fas', 'running'
-                      - else
-                        .card__icon__done
-                          = icon 'fas', 'check'
+          -if team.boards.present?
+            - team.boards.each do |board|
+              .board-name
+                = link_to "#{board.name}", board_path(board.id)
+                %div
+                - if @user.cards.present?
+                  - @user.cards.each do |card|
+                    - if card.list.board_id == board.id
+                      .card-info
+                        .card__title.bold
+                          = link_to "#{card.name}", board_card_path(board.id, card.id), remote: true
+                          #card-show.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+                        - if card.deadline.present?
+                          .card__icon
+                            = icon 'far', 'clock'
+                            = card.deadline
+                        .card__icons
+                          - if card.comments.present?
+                            .card__icon
+                              = icon 'far', 'comment'
+                              = card.comments.length
+                          - if card.users.present?
+                            .card__icon
+                              = icon 'far', 'user'
+                              = card.users.length
+                          - if (card.finish == "doing")
+                            .card__icon
+                              = icon 'fas', 'running'
+                          - else
+                            .card__icon__done
+                              = icon 'fas', 'check'
