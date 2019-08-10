@@ -1,7 +1,16 @@
-.message
-  .message__user
-    = message.user.name
-  .message__date
-    = message.created_at.strftime("%Y/%m/%d %H:%M")
-  .message__content
-    = message.content
+- if message.user == current_user
+  .message{ style: "background-color: #EEFFFF;"}
+    .message__user
+      = user_icon_small(message.user)
+    .message__date
+      = message.created_at.strftime("%Y/%m/%d %H:%M")
+    .message__content
+      = message.content
+- else
+  .message
+    .message__user
+      = user_icon_small(message.user)
+    .message__date
+      = message.created_at.strftime("%Y/%m/%d %H:%M")
+    .message__content
+      = message.content
