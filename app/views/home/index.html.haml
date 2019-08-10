@@ -12,8 +12,19 @@
     .home__containt--3
       How to use?
       .slick
-        .slide 1
-        .slide 2
+        .slide
+          = image_tag "slide1.png", height: "400px"
+          ボードを作成します。ボードは個人またはチームで作成できます。
+        .slide
+          = image_tag "slide2.png", height: "400px"
+          リスト、カードを自由に作成します。
+        .slide
+          = image_tag "slide3.png", height: "400px"
+          カードにはファイルの添付やコメントをすることができます。
+        .slide
+          = image_tag "message.png", height: "400px"
+          チームメンバーにはDMを送ることができます。
       .sign-in_and_log-in
-        = link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary"
-        = link_to "Log in", new_user_session_path, class: "btn btn-outline-primary"
+        - unless user_signed_in?
+          = link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary"
+          = link_to "Log in", new_user_session_path, class: "btn btn-outline-primary"

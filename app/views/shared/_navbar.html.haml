@@ -1,6 +1,6 @@
 - if user_signed_in?
   %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    %a.navbar-brand{:href => "/boards"} Task-manager
+    %a.navbar-brand{:href => "/"} Task-manager
     %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
@@ -8,6 +8,8 @@
         %li.nav-item.active
           = link_to "My Page", user_path(current_user.id), class: "nav-link"
           %span.sr-only (current)
+        %li.nav-item
+          = link_to "Boards", boards_path, class: "nav-link"
         %li.nav-item
           = link_to "Messages", rooms_path, class: "nav-link"
         %li.nav-item.dropdown
