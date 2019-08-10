@@ -18,7 +18,8 @@
                 = e.hidden_field :user_id, value: @user.id
               = f.submit "DM", class: "btn btn-secondary btn-sm"
         .profile__about
-          = @user.about
+          - if @user.about.present?
+            = @user.about
 
   %ul.tab
     %li.tab__menu.active Team
@@ -26,11 +27,12 @@
 
   .tab__area
     .tab__area__contents.show
-      - @user.teams.each do |team|
-        .tab__area__content
-          = link_to team_path(team) do
-            = team_icon_small(team)
-            = team.name
+      - if @user.teams.present?
+        - @user.teams.each do |team|
+          .tab__area__content
+            = link_to team_path(team) do
+              = team_icon_small(team)
+              = team.name
 
     .tab__area__contents
       - if @user.cards.present?
