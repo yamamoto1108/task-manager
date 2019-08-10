@@ -1,7 +1,7 @@
 $(function() {
   $(document).on('turbolinks:load', function() {
     function buildHTML(message) {
-      var html = `<div class="message">
+      var html = `<div class="message" style="background-color: #EEFFFF;">
                     <div class="message__user">
                       ${ message.user_name }
                     </div>
