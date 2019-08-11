@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_team, except: [:new, :create]
+  before_action :correct_team_user,  except: [:show, :new, :create]
 
   def show
   end
@@ -42,5 +44,9 @@ class TeamsController < ApplicationController
 
   def set_team
     @team = Team.find(params[:id])
+  end
+
+  def correct_team_user
+    redirect_to boards_path unless @team.users.include?(current_user)
   end
 end
