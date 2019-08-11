@@ -1,9 +1,8 @@
 = render "shared/board-menu"
 .board__body{ style: "background-image: url(#{@board.background.image})"}
   .lists
-    - if @board.lists.present?
-      .list__items
-        = render @board.lists
+    .list__items
+      = render @board.lists
     .list__add.list
       .list__name
         Add New List
