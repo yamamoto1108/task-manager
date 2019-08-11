@@ -15,7 +15,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      redirect_to team_path(@team)
+      redirect_to team_path(@team), notice: "チームを作成しました。"
     else
       render :new
     end
@@ -27,7 +27,7 @@ class TeamsController < ApplicationController
 
   def update
     if @team.update(team_params)
-      redirect_to team_path(@team)
+      redirect_to team_path(@team), notice: "チームを更新しました。"
     else
       render :edit
     end
