@@ -2,24 +2,26 @@
   %h2 My Boards
   .board__index
     %p.bold [Personal]
-    - @pboards.each do |board|
-      .board__link
-        = link_to board_path(board.id), class: "link" do
-          .board__link{style: "background-image: url(#{board.background.image})"}
-            .bkrgba
-              .board__name
-                = board.name
-        - if board.deadline.present?
-          .board__deadline
-            = icon 'far', 'clock'
-            = board.deadline
+    .boards
+      - @pboards.each do |board|
+        %div
+          = link_to board_path(board.id), class: "link" do
+            .board__link{style: "background-image: url(#{board.background.image})"}
+              .bkrgba
+                .board__name
+                  = board.name
+          - if board.deadline.present?
+            .board__deadline
+              = icon 'far', 'clock'
+              = board.deadline
+
     %p.bold [Team]
     - current_user.teams.each do |team|
       .team-name
         = link_to "#{team.name}", team_path(team.id)
-      .team-boards
+      .boards
         - team.boards.each do |board|
-          .board__link
+          %div
             = link_to board_path(board.id), class: "link" do
               .board__link{style: "background-image: url(#{board.background.image})"}
                 .bkrgba

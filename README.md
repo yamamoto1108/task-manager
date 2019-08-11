@@ -1,24 +1,38 @@
-# README
+ # Task-manager
+カンバン型のToDoアプリです。
+http://3.114.105.43/
+Sign UpまたはLog Inページからテストユーザーでログインできます。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 実装した機能
+* ユーザー関連(devise)
+  * ユーザー新規登録・ログイン機能
+  * ユーザー情報編集機能
+  * ユーザーマイページ機能
 
-Things you may want to cover:
+* Todo管理関連
+  * ボード作成・編集・削除機能
+  * リスト作成・編集・削除機能
+  * カード作成・編集・削除機能
+  * ログインユーザーのボード・カード一覧表示機能
+  * コメント機能
 
-* Ruby version
+* チーム関連
+  * チーム作成・編集機能
+  * チームページ機能
 
-* System dependencies
+* ダイレクトメッセージ関連
+  * チームメンバーへのダイレクトメッセージ送信機能
 
-* Configuration
+* ファイルアップロード関連(Active Storage, mini_magick)
+  * ユーザー・チームアバター
+  * カードへのファイル添付
 
-* Database creation
+* 単体・統合テスト
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 使用技術・環境
+* Ruby 2.6.3
+* Rails 5.2.3
+* Mysql
+* AWS
+  * EC2
+  * S3

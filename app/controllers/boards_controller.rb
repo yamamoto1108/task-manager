@@ -18,7 +18,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      redirect_to boards_path
+      redirect_to boards_path, notice: "ボードを作成しました。"
     else
       @backgrounds = Background.all
       render :new
@@ -31,7 +31,7 @@ class BoardsController < ApplicationController
 
   def update
     if @board.update(board_params)
-      redirect_to board_path(@board)
+      redirect_to board_path(@board), notice: "ボードを更新しました。"
     else
       @backgrounds = Background.all
       render :edit
@@ -40,7 +40,7 @@ class BoardsController < ApplicationController
 
   def destroy
     @board.destroy
-    redirect_to boards_path
+    redirect_to boards_path, notice: "ボードを削除しました。"
   end
 
   private
