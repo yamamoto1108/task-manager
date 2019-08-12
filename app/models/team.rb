@@ -4,7 +4,7 @@ class Team < ApplicationRecord
   has_many :boards
 
   has_one_attached :image
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 15 }
   validate :image_presence
 
   def image_presence

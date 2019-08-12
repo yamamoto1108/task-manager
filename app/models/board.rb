@@ -4,5 +4,5 @@ class Board < ApplicationRecord
   has_many :cards, through: :lists
   belongs_to :user
   belongs_to :team, optional: true
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 20 }
 end

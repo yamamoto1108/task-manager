@@ -4,7 +4,7 @@ class Card < ApplicationRecord
   has_many :users, through: :card_users
   has_many :comments, dependent: :destroy
   has_many_attached :images
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 20 }
 
   enum finish: {doing: false, done!: true}
 end

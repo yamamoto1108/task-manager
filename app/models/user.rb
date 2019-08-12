@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :comments
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 10 }
   validate :image_presence
 
   has_one_attached :image
