@@ -1,6 +1,7 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_board, only: [:show, :edit, :update, :destroy]
+  before_action :board_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @pboards = Board.where(user_id: current_user.id, team_id: nil)
@@ -51,5 +52,14 @@ class BoardsController < ApplicationController
 
   def set_board
     @board = Board.find(params[:id])
+  end
+
+  def board_user
+    @board = Board.find(params[:id])
+    if @board.team.present?
+      redirect_to boards_path unless @board.team.users.include?(current_user)
+    else
+      redirect_to boards_path unless @board.user == current_user
+    end
   end
 end

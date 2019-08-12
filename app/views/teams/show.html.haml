@@ -5,8 +5,9 @@
         = team_icon_large(@team)
       .profile__name
         = @team.name
-        = link_to edit_team_path(@team) do
-          = icon 'fas', 'edit', class: 'icon'
+        - if @team.users.include?(current_user)
+          = link_to edit_team_path(@team) do
+            = icon 'fas', 'edit', class: 'icon'
         .profile__about
           = @team.about
 
