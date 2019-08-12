@@ -1,6 +1,6 @@
  # Task-manager
 カンバン型のToDoアプリです。  
-http://3.114.105.43/  
+http://task--manager.tk/   
 Sign UpまたはLog Inページからテストユーザーでログインできます。
 
 # 実装した機能
@@ -36,3 +36,4 @@ Sign UpまたはLog Inページからテストユーザーでログインでき�
 * AWS
   * EC2
   * S3
+  * Route53
