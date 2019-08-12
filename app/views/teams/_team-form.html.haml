@@ -23,6 +23,10 @@
       = f.file_field :image, id: "file_img"
     .form-group
       %label Add member
+      .member-explain
+        ※日本で多い名字がユーザーとしてアルファベットで登録されています。
+        %br/
+        （例：yamamoto)
       %br/
       %input#member__search__field{placeholder: 'ユーザー名を入力', type: 'text', name: 'keyword'}
       %button{type: "button", class: "btn btn-outline-success btn-sm",id: "member__search"} Search
