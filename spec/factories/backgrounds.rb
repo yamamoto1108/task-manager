@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :background do
-    image {"aaa.jpg"}
+    image {"aaa.jpeg"}
   end
 end
