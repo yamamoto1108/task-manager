@@ -27,6 +27,12 @@ class ListsController < ApplicationController
     redirect_to board_path(@board)
   end
 
+  def sort
+    list = List.find(params[:list_id])
+    list.update(list_params)
+    render body: nil
+  end
+
   private
 
   def set_board
@@ -34,7 +40,7 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name).merge(board_id: params[:board_id])
+    params.require(:list).permit(:name, :row_order_position).merge(board_id: params[:board_id])
   end
 
   def set_list

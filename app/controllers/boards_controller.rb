@@ -9,6 +9,7 @@ class BoardsController < ApplicationController
 
   def show
     @list = List.new
+    @lists = @board.lists.rank(:row_order)
   end
 
   def new
