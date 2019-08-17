@@ -7,4 +7,7 @@ class Card < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
 
   enum finish: {doing: false, done!: true}
+
+  include RankedModel 
+  ranks :row_order , with_same: :list_id 
 end
