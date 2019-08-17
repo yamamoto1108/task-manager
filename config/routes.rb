@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       put :sort
     end
     resources :cards, except: [:index] do
+      put :sort
       resources :comments, only: [:create]
     end
   end

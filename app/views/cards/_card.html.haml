@@ -1,4 +1,4 @@
-.card
+.card{data: { model_name: card.class.name.underscore, update_url: board_card_sort_path(@board.id, card.id)}}
   .card__title.bold
     = link_to "#{card.name}", board_card_path(@board, card), remote: true, class: "card__title"
     #card-show.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}

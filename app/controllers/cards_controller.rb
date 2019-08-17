@@ -37,6 +37,12 @@ class CardsController < ApplicationController
     redirect_to board_path(@board)
   end
 
+  def sort
+    card = Card.find(params[:card_id])
+    card.update(card_params)
+    render body: nil
+  end
+
   private
 
   def set_board
@@ -48,6 +54,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:name, :about, :deadline, :finish, :list_id, images: [], user_ids: [])
+    params.require(:card).permit(:name, :about, :deadline, :finish, :list_id, :row_order_position, images: [], user_ids: [])
   end
 end

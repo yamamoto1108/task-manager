@@ -7,4 +7,4 @@
     = link_to board_list_path(@board.id, list.id), method: :delete, "data-dismiss" => "modal", data: { confirm: "リストを削除しますか？", commit: "DELETE", cancel: "Cancel"}, title: "DELETE List" do
       = icon 'fas', 'trash-alt', class: "icon"
   .list__cards
-    = render list.cards
+    = render list.cards.rank(:row_order)
