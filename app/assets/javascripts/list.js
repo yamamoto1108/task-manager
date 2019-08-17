@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
   function buildHtml(list) {
-    var html = `<div class="list">
+    var html = `<div class="list ui-sortable-handle" data-model-name="list" data-update-url="/boards/${list.board_id}/lists/${list.id}/sort">
                   <div class="list__name">
                     ${list.name}
                   </div>
