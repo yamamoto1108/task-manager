@@ -86,3 +86,5 @@ gem 'data-confirm-modal'
 gem 'devise'
 gem 'mini_magick', ">= 4.9.4"
 gem 'aws-sdk-s3'
+gem 'ranked-model'
+gem 'jquery-ui-rails'
