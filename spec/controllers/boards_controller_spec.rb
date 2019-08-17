@@ -37,7 +37,7 @@ describe BoardsController do
         expect(assigns(:board)).to eq board
       end
       it "renders the :show template" do
-        board = create(:board)
+        board = create(:board, user_id: user.id, team_id: "")
         get :show, params: {id: board}
         expect(response).to render_template :show
       end
@@ -76,7 +76,7 @@ describe BoardsController do
   end
 
   describe 'POST #create' do
-    let(:params) { { background_id: background.id, user_id: user.id, team_id: team.id, board: attributes_for(:board) }}
+    let(:params) { { background_id: background.id, user_id: user.id, team_id: "", board: attributes_for(:board) }}
     context 'log in' do
       before do
         login_user user
@@ -125,7 +125,7 @@ describe BoardsController do
         expect(assigns(:board)).to eq board
       end
       it "renders the :edit template" do
-        board = create(:board)
+        board = create(:board, user_id: user.id, team_id: "")
         get :edit, params: {id: board}
         expect(response).to render_template :edit
       end
