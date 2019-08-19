@@ -27,7 +27,7 @@ feature 'user', type: :feature do
     expect(page).to have_content 'を入力してください'
   end
 
-  scenario 'log in user' do
+  scenario 'log in and log out user' do
     visit root_path
     expect(page).to have_content('Log in')
     visit new_user_session_path
@@ -36,6 +36,9 @@ feature 'user', type: :feature do
     find('input[data-disable-with="Log in"]').click
     expect(current_path).to eq user_path(user)
     expect(page).to have_content 'ログインしました'
+
+    click_on('Logout')
+    expect(page).to have_content 'ログアウトしました'
   end
 
   scenario 'can not log in user' do
